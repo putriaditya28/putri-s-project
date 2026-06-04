@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Putri Ramadhani Aditya — Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,300&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --card:#111114;
+      --muted:#a7a7ad;
+      --text:#f3f3f6;
+      --soft:#1a1a1f;
+      --line: rgba(255,255,255,.08);
+      --accent:#8B0000;      /* dark red */
+      --accent2:#d9d9de;     /* pale */
+      --good:#7CFFB2;
+      --warn:#FFD27C;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; background: radial-gradient(1200px 800px at 70% -10%, rgba(139,0,0,.20), transparent 60%),
+                                        radial-gradient(900px 700px at 0% 40%, rgba(255,255,255,.06), transparent 55%),
+                                        var(--bg);
+               color:var(--text);
+               font-family:"DM Sans", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    }
+
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:1100px; margin:0 auto; padding:28px 20px 80px; }
+
+    /* Top minimal bar */
+    .topline{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:10px 0 16px;
+      color:rgba(255,255,255,.65);
+      font-size:12px; letter-spacing:.10em; text-transform:uppercase;
+      border-bottom:1px solid var(--line);
+    }
+    .topline .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      padding:8px 12px;
+      border-radius:999px;
+      white-space:nowrap;
+    }
+    .dot{ width:6px; height:6px; border-radius:50%; background:var(--accent); display:inline-block; }
+
+    /* Hero */
+    .hero{
+      margin-top:18px;
+      border-radius:22px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:
+        radial-gradient(1200px 800px at 70% 10%, rgba(139,0,0,.35), transparent 65%),
+        linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      position:relative;
+    }
+    .hero-inner{ padding:46px 34px 26px; }
+
+    .hero-kicker{
+      font-size:12px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.55);
+      margin-bottom:14px;
+    }
+    .hero-title{
+      font-family:"Bebas Neue", sans-serif;
+      font-size: clamp(52px, 8vw, 90px);
+      line-height:.88;
+      margin:0;
+      letter-spacing:.02em;
+    }
+    .hero-title .ghost{ color: rgba(255,255,255,.12); }
+    .hero-sub{
+      margin-top:14px;
+      max-width:72ch;
+      color: rgba(255,255,255,.72);
+      line-height:1.75;
+      font-size:14px;
+    }
+
+    .hero-meta{
+      display:grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap:12px;
+      margin-top:26px;
+      padding-top:18px;
+      border-top:1px solid var(--line);
+    }
+    .meta{
+      background: rgba(0,0,0,.20);
+      border:1px solid var(--line);
+      border-radius:16px;
+      padding:14px 14px 12px;
+      min-height:76px;
+    }
+    .meta .label{
+      font-size:11px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.48);
+      margin-bottom:6px;
+    }
+    .meta .value{
+      font-size:13px;
+      color: rgba(255,255,255,.86);
+      line-height:1.5;
+    }
+
+    /* Sticky nav */
+    .nav{
+      position:sticky;
+      top:0;
+      z-index:10;
+      margin-top:18px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: rgba(11,11,13,.72);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      overflow:auto;
+    }
+    .nav-inner{
+      display:flex;
+      gap:0;
+      min-width:720px;
+    }
+    .nav a{
+      padding:14px 16px;
+      font-size:12px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.60);
+      border-right:1px solid var(--line);
+      white-space:nowrap;
+    }
+    .nav a:hover{ background: rgba(255,255,255,.05); color: rgba(255,255,255,.85); }
+    .nav a.active{
+      background: rgba(139,0,0,.45);
+      color: rgba(255,255,255,.95);
+    }
+
+    /* Sections */
+    section{ margin-top:18px; }
+    .grid-2{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:14px;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:22px;
+    }
+    .card.soft{ background: rgba(255,255,255,.03); }
+    .label{
+      font-size:11px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.55);
+      margin-bottom:12px;
+    }
+    h2{
+      margin:0 0 10px;
+      font-family:"Bebas Neue", sans-serif;
+      font-size:34px;
+      letter-spacing:.02em;
+      line-height:1.02;
+    }
+    .p{
+      margin:0;
+      color: rgba(255,255,255,.74);
+      line-height:1.75;
+      font-size:14px;
+    }
+
+    /* Chips */
+    .chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+    .chip{
+      font-size:12px;
+      color: rgba(255,255,255,.78);
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      padding:8px 10px;
+      border-radius:999px;
+    }
+
+    /* Work grid */
+    .work-grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+      margin-top:12px;
+    }
+    .work{
+      border-radius:16px;
+      border:1px solid var(--line);
+      background: #0f0f13;
+      overflow:hidden;
+      min-height:170px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      position:relative;
+    }
+    .work::before{
+      content:"";
+      position:absolute; top:0; left:0; right:0;
+      height:3px;
+      background: var(--accent);
+      opacity:.9;
+    }
+    .work-top{ padding:16px 16px 10px; }
+    .work-client{
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.40);
+      margin-bottom:10px;
+    }
+    .work-title{
+      font-family:"Bebas Neue", sans-serif;
+      font-size:20px;
+      line-height:1.05;
+      letter-spacing:.02em;
+      margin:0;
+    }
+    .work-bottom{
+      padding:12px 16px 16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      border-top:1px solid var(--line);
+      color: rgba(255,255,255,.70);
+      font-size:12px;
+    }
+    .tag{
+      background: rgba(139,0,0,.38);
+      border:1px solid rgba(139,0,0,.55);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:11px;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.85);
+      white-space:nowrap;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 12px;
+      border-radius:12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--line);
+      color: rgba(255,255,255,.85);
+    }
+    .btn:hover{ background: rgba(255,255,255,.09); }
+
+    /* Tables (simple) */
+    .tbl{
+      width:100%;
+      border-collapse:separate;
+      border-spacing:0;
+      overflow:hidden;
+      border-radius:14px;
+      border:1px solid var(--line);
+      margin-top:12px;
+    }
+    .tbl th, .tbl td{
+      padding:12px 12px;
+      border-bottom:1px solid var(--line);
+      font-size:13px;
+      vertical-align:top;
+    }
+    .tbl th{
+      text-align:left;
+      font-size:11px;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      color: rgba(255,255,255,.55);
+      background: rgba(255,255,255,.04);
+    }
+    .tbl tr:last-child td{ border-bottom:none; }
+    .muted{ color: rgba(255,255,255,.62); }
+    .num{ text-align:right; white-space:nowrap; }
+
+    /* Footer contact */
+    .contact{
+      margin-top:18px;
+      border-radius:22px;
+      border:1px solid var(--line);
+      overflow:hidden;
+      background:
+        radial-gradient(1200px 700px at 20% 0%, rgba(139,0,0,.35), transparent 60%),
+        rgba(255,255,255,.03);
+    }
+    .contact-inner{
+      padding:26px 22px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+    .contact h3{
+      margin:0;
+      font-family:"Bebas Neue", sans-serif;
+      font-size:34px;
+      line-height:1;
+      letter-spacing:.02em;
+    }
+    .contact .detail{
+      color: rgba(255,255,255,.72);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 920px){
+      .grid-2{ grid-template-columns:1fr; }
+      .work-grid{ grid-template-columns:1fr; }
+      .hero-meta{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="topline">
+      <div class="pill"><span class="dot"></span> Marketing Portfolio · Case Study</div>
+      <div class="pill">Jakarta (WIB) · 2026</div>
+    </div>
+
+    <header class="hero" id="top">
+      <div class="hero-inner">
+        <div class="hero-kicker">Work Samples · Marketing / Community / Content</div>
+        <h1 class="hero-title">
+          PORT<span class="ghost">—</span><br>FOLIO
+        </h1>
+        <p class="hero-sub">
+          Putri Ramadhani Aditya — Creative marketing & community professional dengan pengalaman
+          campaign planning, KOL strategy, content storytelling, dan reporting.
+        </p>
+
+        <div class="hero-meta">
+          <div class="meta">
+            <div class="label">Name</div>
+            <div class="value">Putri Ramadhani Aditya</div>
+          </div>
+          <div class="meta">
+            <div class="label">Expertise</div>
+            <div class="value">Marketing · Community · Content</div>
+          </div>
+          <div class="meta">
+            <div class="label">Contact</div>
+            <div class="value">putrizain2802@gmail.com · +62 81905488379</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <nav class="nav">
+      <div class="nav-inner">
+        <a class="active" href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#work">Selected Work</a>
+        <a href="#case-x5">Case Study: X5</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- ABOUT -->
+    <section id="about" class="grid-2">
+      <div class="card">
+        <div class="label">About Me</div>
+        <h2>Creative marketing & community—yang fokus ke brand yang “relatable”.</h2>
+        <p class="p">
+          Berpengalaman di beauty & lifestyle brands, dengan kekuatan di audience engagement,
+          content ideation, dan social media storytelling. Suka membangun strategi yang “earned”—bukan terasa “bought”.
+        </p>
+        <div class="chips">
+          <span class="chip">KOL & Influencer Campaign Strategy</span>
+          <span class="chip">Social Media Content Planning</span>
+          <span class="chip">Brand Community Engagement</span>
+          <span class="chip">Digital Ads & Sponsored Content</span>
+          <span class="chip">Campaign Reporting & Analytics</span>
+        </div>
+      </div>
+
+      <div class="card soft">
+        <div class="label">Industry Experience</div>
+        <div class="chips" style="margin-top:0;">
+          <span class="chip">Beauty</span>
+          <span class="chip">Lifestyle</span>
+          <span class="chip">Health</span>
+          <span class="chip">FMCG</span>
+          <span class="chip">E-commerce</span>
+        </div>
+
+        <div style="margin-top:16px; border-top:1px solid var(--line); padding-top:14px;">
+          <div class="label">Signature Approach</div>
+          <p class="p">
+            Campaign mix yang seimbang: macro untuk visibility, mid-tier untuk trust, micro–nano untuk UGC & trial drive.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE -->
+    <section id="experience" class="card">
+      <div class="label">Work Experience</div>
+
+      <table class="tbl">
+        <thead>
+          <tr>
+            <th style="width:22%;">Company</th>
+            <th style="width:20%;">Role</th>
+            <th>Highlight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Curve Agency</strong></td>
+            <td class="muted">KOL Campaign Strategist</td>
+            <td class="muted">
+              Developed full KOL campaign strategy untuk X5 RTD beverage launch. Architected 3-tier influencer mix
+              (macro/mid-tier/micro) di budget Rp 500jt, target 2.5M+ reach.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>JD.ID</strong></td>
+            <td class="muted">Campaign Manager · Home Appliances</td>
+            <td class="muted">
+              Planned, executed, dan reported campaigns untuk category Home Appliances. Kolaborasi dengan design untuk landing page thematic & brand campaigns.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Klikdokter</strong></td>
+            <td class="muted">Account & Content Marketing</td>
+            <td class="muted">
+              Managed sponsored editorial content serta kolaborasi FMCG/health brands. Organized doctor-led talkshows dengan brand sponsorship.
+            </td>
+          </tr>
+          <tr>
+            <td><strong>Mecapan</strong></td>
+            <td class="muted">Content & Community</td>
+            <td class="muted">
+              Developed IG Feed content dan managed giveaway campaigns untuk Mecapan dan Mecapan for Business.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- WORK -->
+    <section id="work" class="card">
+      <div class="label">Selected Work</div>
+      <h2>Highlights yang paling representatif.</h2>
+      <p class="p">Kumpulan project utama (bisa kamu jadikan pintu masuk ke case study detail).</p>
+
+      <div class="work-grid">
+        <article class="work">
+          <div class="work-top">
+            <div class="work-client">X5 Beverage</div>
+            <h3 class="work-title">KOL Campaign Strategy</h3>
+          </div>
+          <div class="work-bottom">
+            <span class="tag">Campaign Strategy</span>
+            <a class="btn" href="#case-x5">View case →</a>
+          </div>
+        </article>
+
+        <article class="work">
+          <div class="work-top">
+            <div class="work-client">JD.ID</div>
+            <h3 class="work-title">Home Appliances Campaigns</h3>
+          </div>
+          <div class="work-bottom">
+            <span class="tag">Digital Marketing</span>
+            <span class="muted">Summary-ready</span>
+          </div>
+        </article>
+
+        <article class="work">
+          <div class="work-top">
+            <div class="work-client">Klikdokter</div>
+            <h3 class="work-title">Brand Sponsorship & Talkshow</h3>
+          </div>
+          <div class="work-bottom">
+            <span class="tag">Content + Events</span>
+            <span class="muted">Summary-ready</span>
+          </div>
+        </article>
+
+        <article class="work">
+          <div class="work-top">
+            <div class="work-client">Mecapan</div>
+            <h3 class="work-title">IG Feed Content & Giveaway</h3>
+          </div>
+          <div class="work-bottom">
+            <span class="tag">Social Media</span>
+            <span class="muted">Summary-ready</span>
+          </div>
+        </article>
+
+        <article class="work" style="background: linear-gradient(180deg, rgba(139,0,0,.65), rgba(15,15,18,.75));">
+          <div class="work-top">
+            <div class="work-client">Pepsodent × PDGI</div>
+            <h3 class="work-title">Branded Seminar</h3>
+          </div>
+          <div class="work-bottom">
+            <span class="tag" style="background: rgba(0,0,0,.25); border-color: rgba(255,255,255,.18);">Partnership</span>
+            <span class="muted">Summary-ready</span>
+          </div>
+        </article>
+
+        <article class="work" style="background: rgba(255,255,255,.04);">
+          <div class="work-top">
+            <div class="work-client">Nutrafor Wazzir</div>
+            <h3 class="work-title">Branded Article</h3>
+          </div>
+          <div class="work-bottom">
+            <span class="tag" style="background: rgba(139,0,0,.55);">Content Marketing</span>
+            <span class="muted">Summary-ready</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CASE STUDY X5 -->
+    <section id="case-x5" class="card">
+      <div class="label">Case Study</div>
+      <h2>X5 — KOL Campaign for New RTD Beverage Launch</h2>
+      <p class="p">
+        Context: RTD crowded space (Pocari, Le Minerale, Hydro Coco). X5 menang bukan lewat out-spend,
+        tapi out-relate. Gen Z & Millennials (18–35) lebih percaya orang daripada brand.
+      </p>
+
+      <div class="grid-2" style="margin-top:14px;">
+        <div class="card soft">
+          <div class="label">Big Idea</div>
+          <h2 style="font-size:30px; margin-bottom:8px;">“Your Vibe, Your X5.”</h2>
+          <p class="p">
+            X5 hadir di momen yang “defining”: post-gym, rooftop hangout, study grind, beach weekend.
+            Setiap KOL punya versi X5-nya sendiri → brand terasa multi-dimensional & lived-in.
+          </p>
+
+          <div style="margin-top:14px; border-top:1px solid var(--line); padding-top:14px;">
+            <div class="label">Funnel Strategy</div>
+            <table class="tbl" style="margin-top:10px;">
+              <thead>
+                <tr>
+                  <th>Stage</th>
+                  <th>Driver</th>
+                  <th>Objective</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Awareness</strong></td>
+                  <td class="muted">Macro KOLs</td>
+                  <td class="muted">Reach & visibility</td>
+                </tr>
+                <tr>
+                  <td><strong>Affinity</strong></td>
+                  <td class="muted">Mid-tier</td>
+                  <td class="muted">Lifestyle storytelling & trust</td>
+                </tr>
+                <tr>
+                  <td><strong>Activation</strong></td>
+                  <td class="muted">Micro + Nano</td>
+                  <td class="muted">UGC & trial drive</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="card soft">
+          <div class="label">Targets & Outcome (Week 8)</div>
+          <table class="tbl">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th class="num">Expected</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="muted">Incremented engagement rate (weighted avg)</td>
+                <td class="num"><strong>5–8%</strong></td>
+              </tr>
+              <tr>
+                <td class="muted">Estimated total reach (conservative)</td>
+                <td class="num"><strong>2.5M+</strong></td>
+              </tr>
+              <tr>
+                <td class="muted">Total content pieces (all platforms)</td>
+                <td class="num"><strong>90+</strong></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="margin-top:14px; border-top:1px solid var(--line); padding-top:14px;">
+            <div class="label">Why this mix works</div>
+            <p class="p">
+              Budget Rp 500jt “terasa besar” tapi cepat habis kalau fokus celebrity.
+              Arsitektur tier memastikan macro memberi momentum, sementara authenticity & volume datang dari micro–nano.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;" class="card soft">
+        <div class="label">KOL Tier Strategy (Estimate)</div>
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Tier</th>
+              <th>Followers</th>
+              <th>Qty</th>
+              <th>Role</th>
+              <th class="num">Est. Budget</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Macro</strong></td>
+              <td class="muted">500K – 2M</td>
+              <td class="muted">3–4</td>
+              <td class="muted">Launch amplification & first-wave awareness</td>
+              <td class="num"><strong>Rp 147jt</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Mid-tier</strong></td>
+              <td class="muted">100K – 500K</td>
+              <td class="muted">5–7</td>
+              <td class="muted">Lifestyle storytelling & trust</td>
+              <td class="num"><strong>Rp 82jt</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Micro + Nano</strong></td>
+              <td class="muted">5K – 100K</td>
+              <td class="muted">15–20</td>
+              <td class="muted">UGC, trial drive, hyper-local reach</td>
+              <td class="num"><strong>Rp 32.5jt + 65jt</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid-2" style="margin-top:14px;">
+        <div class="card soft">
+          <div class="label">Content Territories</div>
+          <div class="chips" style="margin-top:0;">
+            <span class="chip">Fits Right Into Your Day</span>
+            <span class="chip">First Sip Reactions</span>
+            <span class="chip">My City, My X5</span>
+            <span class="chip">X5 in My Day</span>
+          </div>
+          <p class="p" style="margin-top:12px;">
+            Fokus ke format yang “natural” (POV, day-in-life, first reaction), bukan hard-selling.
+          </p>
+        </div>
+
+        <div class="card soft">
+          <div class="label">Deliverables (Plan)</div>
+          <table class="tbl" style="margin-top:10px;">
+            <thead>
+              <tr>
+                <th>Platform</th>
+                <th>Format</th>
+                <th>Tier</th>
+                <th class="num">Qty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Instagram</td>
+                <td class="muted">IG Reels</td>
+                <td class="muted">Macro + Mid-tier</td>
+                <td class="num">10–12</td>
+              </tr>
+              <tr>
+                <td>Instagram</td>
+                <td class="muted">Stories (3–5 frames/KOL)</td>
+                <td class="muted">All tiers</td>
+                <td class="num">50–70</td>
+              </tr>
+              <tr>
+                <td>TikTok</td>
+                <td class="muted">Short-form video (15–60s)</td>
+                <td class="muted">Mid-tier + Micro</td>
+                <td class="num">15–20</td>
+              </tr>
+              <tr>
+                <td>TikTok</td>
+                <td class="muted">Duet / Stitch (brand acc)</td>
+                <td class="muted">Micro + Nano</td>
+                <td class="num">10–15</td>
+              </tr>
+              <tr>
+                <td>YouTube</td>
+                <td class="muted">Integrated mention (vlog)</td>
+                <td class="muted">Macro (optional)</td>
+                <td class="num">1–2</td>
+              </tr>
+              <tr>
+                <td>Instagram</td>
+                <td class="muted">Edited reel (15–30s)</td>
+                <td class="muted">Mid-tier</td>
+                <td class="num">6–8</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="card soft" style="margin-top:14px;">
+        <div class="label">Execution Timeline (Week 1–8)</div>
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Phase</th>
+              <th>Week</th>
+              <th>Key actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Strategy Lock</strong></td>
+              <td class="muted">W1</td>
+              <td class="muted">KOL long list (50+), brief finalisation, platform & budget sign-off</td>
+            </tr>
+            <tr>
+              <td><strong>KOL Outreach</strong></td>
+              <td class="muted">W2–W3</td>
+              <td class="muted">Pitch & negotiate, contract sign, content brief delivered</td>
+            </tr>
+            <tr>
+              <td><strong>Pre-Production</strong></td>
+              <td class="muted">W4–W5</td>
+              <td class="muted">Seeding product, content calendar set, draft review</td>
+            </tr>
+            <tr>
+              <td><strong>Launch Wave 1</strong></td>
+              <td class="muted">W6–W7</td>
+              <td class="muted">Macro go live, paid amplification on, UGC monitoring begins</td>
+            </tr>
+            <tr>
+              <td><strong>Amplify Wave</strong></td>
+              <td class="muted">W6–W7</td>
+              <td class="muted">Mid + micro content drops, best UGC reposted, engagement management</td>
+            </tr>
+            <tr>
+              <td><strong>Wrap & Report</strong></td>
+              <td class="muted">W8</td>
+              <td class="muted">Final content goes live, analytics compiled, whitelisting handover</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card soft" style="margin-top:14px;">
+        <div class="label">Budget Allocation (Rp 500,000,000)</div>
+        <table class="tbl">
+          <thead>
+            <tr>
+              <th>Line item</th>
+              <th>Description</th>
+              <th class="num">Budget</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Macro KOL fees</strong></td>
+              <td class="muted">2–3 macro KOLs, 1 feed + 3 stories + 1 reel/TikTok per KOL</td>
+              <td class="num"><strong>146,250,000</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Mid-tier KOL fees</strong></td>
+              <td class="muted">5–7 mid-tier, multi-platform deliverables</td>
+              <td class="num"><strong>81,250,000</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Micro & Nano KOL fees</strong></td>
+              <td class="muted">15–20 creators, gifting + nominal fee</td>
+              <td class="num"><strong>97,500,000</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Content Production</strong></td>
+              <td class="muted">Editing support, resizing, brand asset provision</td>
+              <td class="num"><strong>55,000,000</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Paid Amplification</strong></td>
+              <td class="muted">Whitelisting + boosting top-performing posts</td>
+              <td class="num"><strong>55,000,000</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Agency Management fee</strong></td>
+              <td class="muted">Strategy, outreach, negotiation, reporting</td>
+              <td class="num"><strong>45,000,000</strong></td>
+            </tr>
+            <tr>
+              <td><strong>Contingency / Buffer</strong></td>
+              <td class="muted">Rate negotiation buffer, additional gifting</td>
+              <td class="num"><strong>20,000,000</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="card soft" style="margin-top:14px;">
+        <div class="label">Negotiation Approach</div>
+        <div class="grid-2" style="gap:12px;">
+          <div class="card" style="padding:16px;">
+            <div class="label">01</div>
+            <p class="p"><strong>Negotiate deliverables before rate</strong><br>
+              Tanyakan apa yang bisa mereka deliver di range budget, bukan “minta lebih murah” dulu.
+            </p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <div class="label">02</div>
+            <p class="p"><strong>Timing is the real leverage</strong><br>
+              Approach di window yang tepat (di sela campaign besar) untuk negosiasi lebih efektif.
+            </p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <div class="label">03</div>
+            <p class="p"><strong>First mover only works if brief is tight</strong><br>
+              Macro KOL akan “screen us back”—brief harus rapi, visual ready, proses revisi jelas.
+            </p>
+          </div>
+          <div class="card" style="padding:16px;">
+            <div class="label">04</div>
+            <p class="p"><strong>Whitelisting after go-live</strong><br>
+              Minta whitelisting setelah konten terbukti perform; peluang “yes” lebih tinggi.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- CONTACT -->
+    <footer id="contact" class="contact">
+      <div class="contact-inner">
+        <div>
+          <h3>Ready for what’s next?</h3>
+          <div class="detail">Let’s talk — putrizain2802@gmail.com · +62 81905488379</div>
+        </div>
+        <a class="btn" href="#top">Back to top ↑</a>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Simple active state on nav (optional)
+    const navLinks = Array.from(document.querySelectorAll(".nav a"));
+    const sections = navLinks.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          navLinks.forEach(a => a.classList.remove("active"));
+          const id = "#" + e.target.id;
+          const active = navLinks.find(a => a.getAttribute("href") === id);
+          if(active) active.classList.add("active");
+        }
+      });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0.01 });
+
+    sections.forEach(s => obs.observe(s));
+  </script>
+</body>
+</html>
